@@ -115,7 +115,6 @@ STATIC_URL = '/static/'
 # Extra lookup directories for collectstatic to find static files
 
 #  Add configuration for static files storage using whitenoise
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 LOGIN_REDIRECT_URL = '/'
 prod_db = dj_database_url.config(conn_max_age=500)
