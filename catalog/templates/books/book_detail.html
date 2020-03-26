@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<div class="container container-fluid pt-3 pr-5">
+    <div class="card">
+        <div class="card-header">
+            Details of <span style="color:brown; font-weight:bold">{{book.title}}: </span>
+        </div>
+            <div class="card-body">
+                <span>Author: </span><a href="{% url 'author-detail' book.pk %}">{{book.author}}</a><br>
+                <span>Summary: </span>{{book.summary}}<br>
+                <span>ISBN:  </span>{{book.isbn}}<br>
+                <span>Language:  </span>{{book.language.all}}<br>
+                <span>Genre:  </span>{{book.genre.all|join:", "}} <br>
+            </div>
+            <div class="card-header">Copies of the Book</div>
+            <div class="card-body">
+                {% for copy in book.bookinstance_set.all  %}
+                  <p class=" {% if copy.status == 'a' %} text-success {% elif copy.status == 'm'%}text-danger  {% else %}text-warning{% endif %}" >
+                     <span>Status: </span> {{copy.get_status_display}}
+                  </p>
+                  {% if copy.status != 'a' %}
+                      <span>Due to be returned on: </span>{{copy.due_back}}<br>
+                  {% endif %}
+                  <span style="font-weight: bold;"> Imprint:   </span>{{copy.imprint}}<br>
+                  <span class="text-muted">ID: </span>{{copy.id}}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

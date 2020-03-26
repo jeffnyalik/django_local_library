@@ -1,0 +1,23 @@
+{% extends './base.html' %}
+
+{% block content %}
+    <div class="container container-fluid pt-3">
+        <div class="card" style="width: 80%;">
+            <div class="card-header">The Library has the following record counts:</div>
+                <ul class="list-group list-group-item">
+                    <li class="list-group-item"><span style="color:brown">Books: </span>{{num_book}}</li>
+                    <li class="list-group-item"><span style="color:brown">Copies: </span>{{num_instance}}</li>
+                    <li class="list-group-item"><span style="color:brown">Copies available: </span>{{num_instances_available}}</li>
+                    <li class="list-group-item"><span style="color:brown">Authors: </span>{{num_authors}}</li>
+                </ul>
+
+                <!-- This session code is not important anyway -->
+                <!-- <p>You have visited this page {{num_vists}} {% if num_visits  == 1 %}
+                    time
+                    {% else %} times -->
+                        
+                    
+                {% endif %} </p>
+            </div>
+    </div>
+{% endblock content %}

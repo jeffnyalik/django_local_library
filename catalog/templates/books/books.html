@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="container-fluid pt-3 pr-5 " style="width: 100%;">
+      <div class="card">
+          <div class="card-header">Book List</div>
+          <div class="card-body">
+              <ul class="list-group list-group-flush">
+                  {% if my_book_list %}
+                      {% for book in my_book_list %}
+                        <li class="list-group-item"> <span>Title: </span> <a href="{{book.get_absolute_url}}">{{book.title}}</a><span>  Author: {{book.author}}</span> </li>
+                      {% endfor %}
+                  {% endif %}
+              </ul>
+          </div>
+      </div>
+  </div>
+{% endblock content %}

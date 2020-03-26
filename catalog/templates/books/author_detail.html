@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container container-fluid pt-4 pr-5">
+        <div class="card">
+            <div class="card-header">Author Information</div>
+            <div class="card-body">
+                <h4> <span style="color: brown;">Author:</span> {{author.first_name}}, {{author.last_name}}</h4>
+                <h6>{{author.date_of_birth}} -</h6>
+            </div>
+            <div class="card-header" style="background-color:gray; font-weight:bold;">Books</div>
+            <div class="card-body">
+                {% for book in author.book_set.all %}
+                  
+                <span style="color: brown;">Book Title: </span><a href="#">{{book.title}} ##</a><br>
+                  <span style="color: brown;">Summary:</span>
+                  <p> {{book.summary}} </p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+
+{% for book in author.book_set.all %} {{book.title}}, {{book.summary}} {% endfor %}
